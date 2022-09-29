@@ -1,20 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { writeUserData } from './Firebase/WriteUser'
-import { authUser } from './Firebase/Auth'
- 
+//import { writeUserData } from './Firebase/WriteUser'
+//import { authUser } from './Firebase/Auth'
+import React  from 'react';
 function App() {
  
-  const createUser = (userEmail, userPassword, name, userId) =>{
-   
-    console.log("AUTH USER: ", authUser(userEmail, userPassword))
-    // if(user !==  false){
-    //   writeUserData(userId, name, userEmail)
-    // }else{
-    //   console.log('auth user failed')
-    // }
-    // console.log(user)s
-  }
+  
  
   return (
     <div className="App">
@@ -23,7 +14,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <button onClick={() => createUser('mike@123.com', 'mike12', 'mike', 1) }>press me</button>
+        <button onClick={() => console.log('hi')}>press me</button>
         <a
           className="App-link"
           href="https://reactjs.org"
