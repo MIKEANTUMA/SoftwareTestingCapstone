@@ -1,5 +1,6 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from './Config'
+const  getAuth = require("firebase/auth")
+const createUserWithEmailAndPassword  = require("firebase/auth");
+const  app = require('./Config')
  
  
  
