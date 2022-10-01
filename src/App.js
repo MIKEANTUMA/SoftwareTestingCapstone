@@ -1,31 +1,59 @@
 import logo from './logo.svg';
 import './App.css';
-//import { writeUserData } from './Firebase/WriteUser'
-//import { authUser } from './Firebase/Auth'
-import React  from 'react';
-function App() {
+// import { writeUserData } from './Firebase/WriteUser'
+// import { authUser } from './Firebase/Auth'
+import { Button, TextField, Grid } from '@mui/material';
+import React, { Component }  from 'react';
+
+class App extends Component {
  
-  
+  // const createUser = (userEmail, userPassword, name, userId) =>{
+   
+  //   console.log("AUTH USER: ", authUser(userEmail, userPassword))
+  //   // if(user !==  false){
+  //   //   writeUserData(userId, name, userEmail)
+  //   // }else{
+  //   //   console.log('auth user failed')
+  //   // }
+  //   // console.log(user)
+  // }
  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={() => console.log('hi')}>press me</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render(){
+    return (
+      <div className="App">
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField 
+              required
+              label="Email"
+              id="userEmail" 
+              type="email" 
+              // inputProps={inputProps}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField 
+              required
+              label="Password"
+              id="userPassword" 
+              type="password" 
+              // inputProps={inputProps} 
+            />
+          </Grid>
+
+          <Grid item xs={4}>
+            <Button
+              id="submit"
+              label="Submit"
+              // onClick={() => createUser('mike@123.com', 'mike12', 'mike', 1)}
+            />
+          </Grid>
+        </Grid>
+        
+      </div>
+    );
+  }
 }
  
 export default App;
