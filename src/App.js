@@ -3,9 +3,11 @@ import './App.css';
 //import { writeUserData } from './Firebase/WriteUser'
 //import { authUser } from './Firebase/Auth'
 import React  from 'react';
+import { Player } from '../Classes/Player'
+
 function App() {
  
-  
+  Player play = new Player()
  
   return (
     <div className="App">

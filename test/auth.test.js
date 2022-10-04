@@ -6,7 +6,7 @@ import writeUserData  from 'golf/src/Firebase/WriteUser.js'
 
 // });
 
-test('write user test', () => {
-  return writeUserData(1, 'mike', 'mike@123.com').then((data) =>{expect(data).toBe(true);});
-});
+// test('write user test', () => {
+//   return writeUserData(1, 'mike', 'mike@123.com').then((data) =>{expect(data).toBe(true);});
+// });
 

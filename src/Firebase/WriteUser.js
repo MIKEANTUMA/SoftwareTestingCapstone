@@ -1,7 +1,7 @@
 import { getDatabase, ref, set } from "firebase/database";
 import { app } from './Config.js'
 
-function writeUserData(userId, name, email) {
+export function writeUserData(userId, name, email) {
   const db = getDatabase(app);
 
   return new Promise ((resolve, reject) => {
@@ -13,5 +13,5 @@ function writeUserData(userId, name, email) {
 }
 
 
-module.exports = writeUserData
+
 
