@@ -1,11 +1,16 @@
+// @ts-nocheck
+
 import { getDatabase, ref, set } from "firebase/database";
 import { app } from './Config.js'
 
-export function writeUserData(userId, name, email) {
+
+
+
+export default function writeNewUser(userId,name, email, password, f, l, dob) {
   const db = getDatabase(app);
 
   return new Promise ((resolve, reject) => {
-        set(ref(db, 'users/' + userId), {username: name, email: email })
+        set(ref(db, 'users/' + userId), {userName: name, email: email, password: password, firstName: f, lastName: l, DoB: dob})
             .then(() => resolve(true))
             .catch(() => resolve(false));
     })

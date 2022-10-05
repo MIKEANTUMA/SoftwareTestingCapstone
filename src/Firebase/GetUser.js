@@ -1,15 +1,20 @@
+// @ts-nocheck
 import { getDatabase, ref, onValue} from "firebase/database";
-const  app = require('./Config')
+import { Player } from "../Classes/Player.js";
+import { app } from './Config.js'
 
 
-export function getUser(userId){
+export default  function getUser(){
+    console.log('in get user')
     const db = getDatabase(app);
 
-    const userRef = ref(db, 'users/' + 1);
+    const userRef = ref(db, 'users/' +1);
     
     onValue(userRef, (snapshot) => {
     const data = snapshot.val();
-    console.log(data)
+    console.log('data: ',data)
+    let player = new Player(data)
+    console.log('player: ',player.username)
     });
 }
 

@@ -1,33 +1,22 @@
+// @ts-nocheck
+
 import logo from './logo.svg';
 import './App.css';
 //import { writeUserData } from './Firebase/WriteUser'
 //import { authUser } from './Firebase/Auth'
 import React  from 'react';
-import { Player } from '../Classes/Player'
+import  getUser  from './Firebase/GetUser'
+import writeNewUser from './Firebase/WriteUser';
+import { authUser } from './Firebase/Auth';
 
 function App() {
- 
-  Player play = new Player()
- 
+  return authUser('mike@123.com','mike').then((data) => writeNewUser(data.uid,'mike', 'mike@123.com', 'password', 'michael', 'antuofermo', '04/21/2000'))
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={() => console.log('hi')}>press me</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+
     </div>
   );
 }
- 
+
 export default App;

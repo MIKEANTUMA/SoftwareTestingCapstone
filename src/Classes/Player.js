@@ -1,4 +1,5 @@
-import ScoreCards from './ScoreCard'
+// @ts-ignore
+import { ScoreCards } from './ScoreCard'
 
 
 
@@ -11,24 +12,30 @@ import ScoreCards from './ScoreCard'
  *  FirstName: string;
  *  LastName: string;
  *  DoB: Date;
- *  ScoreCards: ScoreCards[];
+ //*  ScoreCards: ScoreCards[];
  * }} IPlayer
  */
 
 /**
  * @implements {IPlayer}
  */
-export class Player2 {
+// @ts-ignore
+export class Player  {
   #UserName;
+  // @ts-ignore
   #Email;
+  // @ts-ignore
   #Password;
+  // @ts-ignore
   #FirstName;
+  // @ts-ignore
   #LastName;
+  // @ts-ignore
   #DoB;
-  #ScoreCards;
+  // #ScoreCards;
 
   /**
-   * @param {unknown} player 
+   * @param {IPlayer} player 
    */
   static isValid(player) {
     return typeof player === 'object' && player !== null
@@ -37,16 +44,22 @@ export class Player2 {
   }
 
   /**
-   * @param {IPlayer} player
+   * @param {unknown} player
    */
   constructor(player) {
-    this.#UserName = player.UserName;
-    this.#Email = player.Email;
+    // @ts-ignore
+    this.#UserName = player.email;
+    // @ts-ignore
+    this.#Email = player.username;
+    // @ts-ignore
     this.#Password = player.Password;
+    // @ts-ignore
     this.#FirstName = player.FirstName;
+    // @ts-ignore
     this.#LastName = player.LastName;
+    // @ts-ignore
     this.#DoB = player.DoB;
-    this.#ScoreCards = player.ScoreCards;
+    // this.#ScoreCards = player.ScoreCards;
   }
 
   get username() { return this.#UserName; }
