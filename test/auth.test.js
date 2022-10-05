@@ -1,4 +1,6 @@
+// @ts-ignore
 import { authUser }  from 'golf/src/Firebase/Auth.js' 
+// @ts-ignore
 import writeUserData  from 'golf/src/Firebase/WriteUser.js' 
 
 // test('auth test', () => {
