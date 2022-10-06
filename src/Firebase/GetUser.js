@@ -4,18 +4,22 @@ import { Player } from "../Classes/Player.js";
 import { app } from './Config.js'
 
 
-export default  function getUser(){
+export default  function getUser(uid){
     console.log('in get user')
     const db = getDatabase(app);
 
-    const userRef = ref(db, 'users/' +1);
+    const userRef = ref(db, 'users/' + uid);
     
-    onValue(userRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log('data: ',data)
-    let player = new Player(data)
-    console.log('player: ',player.username)
-    });
+    return new Promise ((resolve, reject) => 
+    {
+        onValue(userRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log('data: ',data)
+            let player = new Player(data)
+            resolve(data)
+            console.log('player: ',player.username)
+        })
+    })
 }
 
 
