@@ -1,29 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
-//import { writeUserData } from './Firebase/WriteUser'
-//import { authUser } from './Firebase/Auth'
-import React  from 'react';
+import React , { Component} from 'react';
+import { render } from 'react-dom';
+// import { writeUserData } from './Firebase/WriteUser'
+// import { authUser } from './Firebase/Auth'
+import { Button, TextField } from '@mui/material';
+
 function App() {
- 
   
+  // const createUser = (userEmail, userPassword, name, userId) =>{
+   
+  //   console.log("AUTH USER: ", authUser(userEmail, userPassword))
+  //   // if(user !==  false){
+  //   //   writeUserData(userId, name, userEmail)
+  //   // }else{
+  //   //   console.log('auth user failed')
+  //   // }
+  //   // console.log(user)s
+  // }
  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={() => console.log('hi')}>press me</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <TextField 
+            required
+            label="Email"
+            id="userEmail" 
+            type="email" 
+            inputProps={inputProps}
+          />;
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField 
+            required
+            label="Password"
+            id="userPassword" 
+            type="password" 
+            inputProps={inputProps} 
+          />;
+        </Grid>
+
+        <Grid item xs={4}>
+          <Button
+            id="submit"
+            onClick={() => createUser('mike@123.com', 'mike12', 'mike', 1)}
+          />;
+        </Grid>
+      </Grid>
+      
     </div>
   );
 }
