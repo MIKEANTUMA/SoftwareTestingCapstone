@@ -77,7 +77,7 @@ const CreateUser = () => {
         />
       </Grid>
 
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <TextField
           fullWidth
           required
@@ -87,7 +87,7 @@ const CreateUser = () => {
         />
       </Grid>
 
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <TextField
           fullWidth
           required
