@@ -27,8 +27,6 @@ const CreateUser = () => {
 
 
   const handleSubmit = () => {
-
-
     let userData = {
       userName:'mike',
       password: 'mike123',
@@ -60,9 +58,36 @@ const CreateUser = () => {
     //   console.log('error in information entered')
     // }
 
+    let userData = {
+      userName:'mike',
+      password: 'mike123',
+      email: 'mike@123.com',
+      firstName:'michael',
+      lastName: 'antuofermo',
+      DoB: '2000/21/04'
+    }
 
+    UserVaildation(userData)
+    
 
-
+    // if(PASS === true){
+    //   console.log('in handle submit')
+    //   return authUser(email, password).then(data => {
+    //     if(data === false) console.log('auth did not work')
+    //     setUid(data.user.uid);
+    //     writeNewUser(
+    //       data.user.uid,
+    //       userName,
+    //       password,
+    //       email,
+    //       firstName,
+    //       lastName,
+    //       DoB
+    //     ).then(data => console.log('hopfully this works: ', data));
+    //   });
+    // }else{
+    //   console.log('error in information entered')
+    // }
   };
 
   return (
