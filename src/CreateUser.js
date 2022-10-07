@@ -9,6 +9,8 @@ import getUser from "./Firebase/GetUser";
 import writeNewUser from "./Firebase/WriteUser";
 import { authUser } from "./Firebase/Auth";
 import { Button, TextField, Grid } from '@mui/material';
+import UserVaildation from './UserValidation.js'
+
 
 const CreateUser = () => {
   const [temp, setTemp] = useState(false);
@@ -21,37 +23,46 @@ const CreateUser = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [DoB, setDob] = useState('');
-  const [PASS, setPass] =useState(false)
+  const [PASS, setPass] = useState(false)
 
 
   const handleSubmit = () => {
-    let emailValid = false
-    if(String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-      emailValid = true;
-      console.log('email is vaild')
-    }else{
-      console.log('email not vaild')
-      console.log(emailValid)
+
+
+    let userData = {
+      userName:'mike',
+      password: 'mike123',
+      email: 'mike@123.com',
+      firstName:'michael',
+      lastName: 'antuofermo',
+      DoB: '2000/21/04'
     }
 
-    if(PASS === true){
-      console.log('in handle submit')
-      return authUser(email, password).then(data => {
-        if(data === false) console.log('auth did not work')
-        setUid(data.user.uid);
-        writeNewUser(
-          data.user.uid,
-          userName,
-          password,
-          email,
-          firstName,
-          lastName,
-          DoB
-        ).then(data => console.log('hopfully this works: ', data));
-      });
-    }else{
-      console.log('error in information entered')
-    }
+    UserVaildation(userData)
+    
+
+    // if(PASS === true){
+    //   console.log('in handle submit')
+    //   return authUser(email, password).then(data => {
+    //     if(data === false) console.log('auth did not work')
+    //     setUid(data.user.uid);
+    //     writeNewUser(
+    //       data.user.uid,
+    //       userName,
+    //       password,
+    //       email,
+    //       firstName,
+    //       lastName,
+    //       DoB
+    //     ).then(data => console.log('hopfully this works: ', data));
+    //   });
+    // }else{
+    //   console.log('error in information entered')
+    // }
+
+
+
+
   };
 
   return (
