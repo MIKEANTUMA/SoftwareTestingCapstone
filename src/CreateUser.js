@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import getUser from "./Firebase/GetUser";
 import writeNewUser from "./Firebase/WriteUser";
 import { authUser } from "./Firebase/Auth";
+import { Button, TextField, Grid } from '@mui/material';
 import UserVaildation from './UserValidation.js'
 
 
@@ -26,8 +27,6 @@ const CreateUser = () => {
 
 
   const handleSubmit = () => {
-
-
     let userData = {
       userName:'mike',
       password: 'mike123',
@@ -59,58 +58,118 @@ const CreateUser = () => {
     //   console.log('error in information entered')
     // }
 
+    let userData = {
+      userName:'mike',
+      password: 'mike123',
+      email: 'mike@123.com',
+      firstName:'michael',
+      lastName: 'antuofermo',
+      DoB: '2000/21/04'
+    }
 
+    UserVaildation(userData)
+    
 
-
+    // if(PASS === true){
+    //   console.log('in handle submit')
+    //   return authUser(email, password).then(data => {
+    //     if(data === false) console.log('auth did not work')
+    //     setUid(data.user.uid);
+    //     writeNewUser(
+    //       data.user.uid,
+    //       userName,
+    //       password,
+    //       email,
+    //       firstName,
+    //       lastName,
+    //       DoB
+    //     ).then(data => console.log('hopfully this works: ', data));
+    //   });
+    // }else{
+    //   console.log('error in information entered')
+    // }
   };
 
-
-
-
-
-
   return (
-    <div className="CreateUser">
+    <Grid container spacing={2}>
+      <Grid item xs={6}>
+        <TextField
+          fullWidth
+          required
+          label="Email"
+          id="email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Grid>
 
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
+      <Grid item xs={6}>
+        <TextField
+          fullWidth
+          required
+          label="Username"
+          id="userName"
+          onChange={(e) => setUserName(e.target.value)}
+        />
+      </Grid>
 
-        <label>
-          FirstName:
-          <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-        </label>
+      <Grid item xs={4}>
+        <TextField
+          fullWidth
+          required
+          label="First Name"
+          id="firstName"
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </Grid>
 
-        <label>
-          LastName:
-          <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        </label>
+      <Grid item xs={4}>
+        <TextField
+          fullWidth
+          required
+          label="Last Name"
+          id="lastName"
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </Grid>
 
-        <label>
-          UserName:
-          <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
-        </label>
+      <Grid item xs={4}>
+        <TextField
+          fullWidth
+          required
+          label="Password"
+          type="password"
+          id="user"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Grid>
 
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
+      <Grid item xs={4}>
+        <TextField
+          fullWidth
+          required
+          label="Confirm password"
+          type="password"
+          id="confirmPassword"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+      </Grid>
+      
+      {/* <Grid item xs={12}>
+        add datepicker 
+      </Grid> */}
 
-        <label>
-          Confirm Password:
-          <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Date of Birth YYYY/MM/DD:
-          <input type="text" value={DoB} onChange={(e) => setDob(e.target.value)} />
-        </label>
-        <button onClick={() => handleSubmit()}>press me</button>
-    </div>
-  );
+      <Grid item xs={12}>
+        <Button
+          id="submit"
+          variant="contained"
+          onClick={() => handleSubmit()}
+        >
+          Submit
+        </Button>
+      </Grid>
+    </Grid>
+    );
 };
 
 export default CreateUser;
