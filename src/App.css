@@ -36,3 +36,91 @@
     transform: rotate(360deg);
   }
 }
+
+.leftShowcase {
+  width: 70vw;
+  height: 100vh;
+  flex: 1;
+}
+
+.loginImage {
+  width: 100%;
+  height: 100%;
+}
+
+.inputCon{
+  padding: 40px;
+  width: 40%;
+  background-color: rgba(82, 82, 242, 0.09);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginFormContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container{
+  display:flex
+}
+.createUserFlex {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+}
+
+.welcomeConatainer{
+  /* position: absolute; */
+  top: 30%;
+  left: 30%;
+  height:300px;
+  width: 500px;
+  border-radius: 15px;
+  background: rgba(82, 82, 242, 0.4);
+  box-shadow: 0px 2px 4px rgba(0,0,0, 0.5),
+    0px 2px 16px rgba(0,0,0, 0.2);
+  border: thin solid rgba(255,255,255, 0.25);
+  backdrop-filter: blur(100px);
+  color: white;
+}
+
+.welcomeHeader{
+  background-color: rgba(17, 131, 55, 0.4);
+  box-shadow: 1px 1px 6px 6px;
+  
+}
+
+.welcomePage{
+   /* The image used */
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/welcomeImg.jpeg");
+  background-color: red;
+}
+
+.welcomeConatainer a {
+  padding: 16px 8px;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.welcomeConatainer a:active {
+  text-decoration: underline;
+}
+
+.welcomeConatainer h1 {
+  margin: 0;
+}

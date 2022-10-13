@@ -17,15 +17,14 @@ export default function UserVaildation(userData){
         email: false,
         firstName: false,
         lastName: false,
-        DoB: false
       }
 
     console.log(userData)
     console.log('email ', userData.email)
 
 
-    if((userData.userName != null) && (userData.password != null) && (userData.email != null) && (userData.firstName) != null && (userData.lastName) != null && (userData.DoB != null)){
-        console.log('alright this worked')
+    if((userData.userName != null) && (userData.password != null) && (userData.email != null) && (userData.firstName != null) && (userData.lastName != null) ){
+        return true
     }
 
     // let emailValid = false;

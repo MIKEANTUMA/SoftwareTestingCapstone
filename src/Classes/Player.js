@@ -12,7 +12,7 @@ import { ScoreCards } from './ScoreCard'
  *  FirstName: string;
  *  LastName: string;
  *  DoB: Date;
- //*  ScoreCards: ScoreCards[];
+ *  ScoreCards: ScoreCards[];
  * }} IPlayer
  */
 
