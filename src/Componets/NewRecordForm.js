@@ -13,9 +13,9 @@ function NewRecordForm() {
   const [courseName, setCourseName] = useState()
   const [holeInfo, setHoleInfo] = useState()
   const [par, setPar] = useState([])
-  const [num , setNum] = useState()
-  const [stroke, setStroke] = useState()
-  const [yard, setYard] = useState()
+  const [num , setNum] = useState([])
+  const [stroke, setStroke] = useState([])
+  const [yard, setYard] = useState([])
 
   const handleParChange = useCallback((event) =>{
     const index = parseInt(event.target.dataset.index, 10);
@@ -28,39 +28,41 @@ function NewRecordForm() {
 
  
 
-  // const handleNumChange = useCallBack((event) =>{
-  //   const index = parseInt(event.target.dataset.index, 10);
-  //   setNum((n)=>{
-  //     const newNum = [...n];
-  //     newNum[index] = event.target.value;
-  //     return newNum
-  //   });
-  // }, []);
+  const handleNumChange = useCallBack((event) =>{
+    const index = parseInt(event.target.dataset.index, 10);
+    setNum((n)=>{
+      const newNum = [...n];
+      newNum[index] = event.target.value;
+      return newNum
+    });
+  }, []);
 
-  // const handleStrokeChange = useCallBack((event) =>{
-  //   const index = parseInt(event.target.dataset.index, 10);
-  //   setStroke((s)=>{
-  //     const newStroke = [...s];
-  //     newStroke[index] = event.target.value;
-  //     return newStroke
-  //   });
-  // }, []);
+  const handleStrokeChange = useCallBack((event) =>{
+    const index = parseInt(event.target.dataset.index, 10);
+    setStroke((s)=>{
+      const newStroke = [...s];
+      newStroke[index] = event.target.value;
+      return newStroke
+    });
+  }, []);
 
-  // const handleYardChange = useCallBack((event) =>{
-  //   const index = parseInt(event.target.dataset.index, 10);
-  //   setYard((y)=>{
-  //     const newYard = [...y];
-  //     newYard[index] = event.target.value;
-  //     return newYard
-  //   });
-  // }, []);
+  const handleYardChange = useCallBack((event) =>{
+    const index = parseInt(event.target.dataset.index, 10);
+    setYard((y)=>{
+      const newYard = [...y];
+      newYard[index] = event.target.value;
+      return newYard
+    });
+  }, []);
 
 
 
   const handleSubmit=(e)=>{
 
     console.log('par ', par)
-    
+    console.log('num ',num)
+    console.log('stroke ', stroke)
+    console.log('yard ', yard)
   }
 
   return (
