@@ -5,15 +5,17 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@mui/material": "^5.10.7",
+    "@mui/material": "^5.10.10",
+    "bootstrap": "^5.2.2",
     "firebase": "^9.10.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-scripts": "3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts --max_old_space_size=8128 start",
     "build": "react-scripts build",
     "test": "jest --forceExit",
     "eject": "react-scripts eject"

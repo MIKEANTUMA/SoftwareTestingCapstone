@@ -9,7 +9,7 @@ export function authUser(email, password) {
     return new Promise((resolve, reject) => {
         // @ts-ignore
         createUserWithEmailAndPassword(auth, email, password)
-            .then((data) => resolve(data))
+            .then((data) => resolve(data.user.uid))
             .catch(() => resolve(false));
     });                                 
 }

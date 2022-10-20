@@ -40,10 +40,11 @@ const CreateUserForm = () => {
     if (PASS === true) {
       console.log("in handle submit");
       return authUser(email, password).then(data => {
+        console.log('data ',data)
         if (data === false) console.log("auth did not work");
-        setUid(data.user.uid);
+        //setUid(data.user.uid);
         writeNewUser(
-          data.user.uid,
+          data,
           userName,
           password,
           email,

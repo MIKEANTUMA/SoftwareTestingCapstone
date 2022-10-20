@@ -124,3 +124,13 @@
 .welcomeConatainer h1 {
   margin: 0;
 }
+
+.holeStyle{
+  padding:10px
+}
+
+.newRecordForm{
+  margin-left: 25%;
+  margin-right:25%;
+  width: 50%;
+}

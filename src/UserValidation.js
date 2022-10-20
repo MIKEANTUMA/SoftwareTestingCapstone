@@ -12,7 +12,6 @@ export default function UserVaildation(userData){
 
 
     let vaild = {
-        userName: false,
         password: false,
         email: false,
         firstName: false,
@@ -23,7 +22,7 @@ export default function UserVaildation(userData){
     console.log('email ', userData.email)
 
 
-    if((userData.userName != null) && (userData.password != null) && (userData.email != null) && (userData.firstName != null) && (userData.lastName != null) ){
+    if((userData.password != null) && (userData.email != null) && (userData.firstName != null) && (userData.lastName != null) ){
         return true
     }
 
