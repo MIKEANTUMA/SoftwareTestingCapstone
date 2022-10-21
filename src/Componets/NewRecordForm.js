@@ -5,6 +5,7 @@ import { useState, useCallback } from 'react'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "../App.css";
+import WriteNewScoreCard from '../Firebase/WriteNewScoreCard.js'
 
 function NewRecordForm() {
   const [numOfHoles, setNumOfHoles] = useState(0)
@@ -28,7 +29,7 @@ function NewRecordForm() {
 
  
 
-  const handleNumChange = useCallBack((event) =>{
+  const handleNumChange = useCallback((event) =>{
     const index = parseInt(event.target.dataset.index, 10);
     setNum((n)=>{
       const newNum = [...n];
@@ -37,7 +38,7 @@ function NewRecordForm() {
     });
   }, []);
 
-  const handleStrokeChange = useCallBack((event) =>{
+  const handleStrokeChange = useCallback((event) =>{
     const index = parseInt(event.target.dataset.index, 10);
     setStroke((s)=>{
       const newStroke = [...s];
@@ -46,7 +47,7 @@ function NewRecordForm() {
     });
   }, []);
 
-  const handleYardChange = useCallBack((event) =>{
+  const handleYardChange = useCallback((event) =>{
     const index = parseInt(event.target.dataset.index, 10);
     setYard((y)=>{
       const newYard = [...y];
@@ -58,11 +59,30 @@ function NewRecordForm() {
 
 
   const handleSubmit=(e)=>{
-
+    
+    console.log('courseName ',courseName)
+    console.log('players ' , players)
+    console.log('date ',date)
+    console.log('holes ', numOfHoles)
     console.log('par ', par)
     console.log('num ',num)
     console.log('stroke ', stroke)
     console.log('yard ', yard)
+
+    const newScoreCard = {
+      courseName: courseName,
+      players: players,
+      date: date,
+      holes: numOfHoles,
+      par: par,
+      holeNumber: num,
+      holeYardage: yard
+    }
+    console.log('NEWSCORECARD: ', newScoreCard)
+
+    return WriteNewScoreCard(newScoreCard).then((results) =>{
+      console.log('RESULTS ', results)
+    })
   }
 
   return (
@@ -85,7 +105,7 @@ function NewRecordForm() {
 
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label>Date</Form.Label>
-        <Form.Control type="text" placeholder="yyyy/mm/dd" onChange={e => setDate(e.target.value)}/>
+        <Form.Control type="text" placeholder="yyyy-mm-dd" onChange={e => setDate(e.target.value)}/>
       </Form.Group>
       <Button variant="success" type="button" onClick={()=> setNumOfHoles(numOfHoles +1)}>
         Add Hole
@@ -96,16 +116,16 @@ function NewRecordForm() {
             <div key={index} className='holeStyle'>
               <Row>
                 <Col>
-                  <Form.Control placeholder="Hole Number"  />
+                  <Form.Control data-index={index} placeholder="Hole Number"  onChange={handleNumChange}/>
                 </Col>
                 <Col>
                   <Form.Control data-index={index} placeholder="Hole Par" onChange={handleParChange}/>
                 </Col>
                 <Col>
-                  <Form.Control placeholder="strokes" />
+                  <Form.Control data-index={index} placeholder="strokes" onChange={handleStrokeChange}/>
                 </Col>
                 <Col>
-                  <Form.Control placeholder="Hole Yardage" />
+                  <Form.Control data-index={index} placeholder="Hole Yardage" onChange={handleYardChange}/>
                 </Col>
               </Row>
             </div>
