@@ -5,6 +5,7 @@ import WelcomeScreen from "./pages/WelcomeScreen.js";
 import LoginScreen from './pages/LoginScreen.js'
 import HomeScreen from './pages/HomeScreen.js'
 import React from "react";
+import ShowRecords from './Componets/ShowRecords.js';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/pages/CreateUserScreen" element={<CreateUserScreen />} />
           <Route exact path="/pages/LoginScreen" element={<LoginScreen />} />
           <Route exact path='pages/HomeScreen' element={<HomeScreen />} />
+          <Route exact path='pages/ShowRecords' element={<ShowRecords/>}/>
         </Routes>
       </div>
     </Router>

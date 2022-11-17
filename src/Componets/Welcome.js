@@ -12,7 +12,9 @@ const Welcome = () => {
           <h1>Welcome to Puttle</h1>
         </div>
         <div className="welcome1">
-          <Link color="primary" disabled={false} variant="solid"  to="/pages/LoginScreen">
+          <Link color="primary" 
+// @ts-ignore
+          disabled={false} variant="solid"  to="/pages/LoginScreen">
             Login
           </Link>
         </div>
@@ -20,6 +22,7 @@ const Welcome = () => {
           <Link
             to="/pages/CreateUserScreen"
             color="primary"
+            // @ts-ignore
             disabled={false}
             variant="solid"
           >

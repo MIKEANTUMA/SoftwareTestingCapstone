@@ -15,7 +15,7 @@ function BasicExample() {
           <Nav className="d-flex justify-content-between">
 
             <Nav.Link href="#link">New Records</Nav.Link>
-            <Nav.Link href="#link">All Records</Nav.Link>
+            <Nav.Link href="http://localhost:3001/pages/ShowRecords">All Records</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

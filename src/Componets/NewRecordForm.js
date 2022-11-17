@@ -5,13 +5,41 @@ import { useState, useCallback } from 'react'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "../App.css";
-import WriteNewScoreCard from '../Firebase/WriteNewScoreCard.js'
+import { WriteNewScoreCard } from '../Firebase/WriteNewScoreCard.js'
+import ReadRecords from '../Firebase/ReadRecords';
+/*
+{
+    "courseName": "merrick",
+    "date": "2000-04-21",
+    "holes": "2",
+    "holePar": [
+        3,
+        3
+    ],
+    "holeYard": [
+        180,
+        374
+    ],
+    "playerScore": {
+        "mike": [
+            2,
+            5
+        ],
+        "joe": [
+            6,
+            7
+        ]
+    }
+}
+
+*/
+
 
 function NewRecordForm() {
   const [numOfHoles, setNumOfHoles] = useState(0)
-  const [players, setPlayers] = useState()
-  const [date, setDate] = useState()
-  const [courseName, setCourseName] = useState()
+  const [players, setPlayers] = useState([])
+  const [date, setDate] = useState('')
+  const [courseName, setCourseName] = useState('')
   const [holeInfo, setHoleInfo] = useState()
   const [par, setPar] = useState([])
   const [num , setNum] = useState([])
@@ -57,8 +85,11 @@ function NewRecordForm() {
   }, []);
 
 
+  const handleTest=()=>{
+    ReadRecords()
+  }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit= async ()=>{
     
     console.log('courseName ',courseName)
     console.log('players ' , players)
@@ -80,9 +111,7 @@ function NewRecordForm() {
     }
     console.log('NEWSCORECARD: ', newScoreCard)
 
-    return WriteNewScoreCard(newScoreCard).then((results) =>{
-      console.log('RESULTS ', results)
-    })
+   console.log('heyyyyyyy!!!!!!!@@@@@@@ ', await WriteNewScoreCard(newScoreCard))
   }
 
   return (
@@ -100,7 +129,7 @@ function NewRecordForm() {
 
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label>Players</Form.Label>
-        <Form.Control type="text" placeholder="comma separated" onChange={e => setPlayers(e.target.value)}/>
+        <Form.Control type="text" placeholder="comma separated" onChange={e => setPlayers(e.target.value.split(',').filter(nonempty => nonempty.trim()))}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicText">
@@ -136,6 +165,10 @@ function NewRecordForm() {
 
       <Button variant="primary" onClick={()=> handleSubmit()}>
         Submit
+      </Button>
+
+      <Button variant="primary" onClick={()=> handleTest()}>
+        test read records
       </Button>
        
     </Form>

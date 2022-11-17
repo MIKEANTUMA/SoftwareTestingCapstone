@@ -10,7 +10,7 @@ export default function writeNewUser(userId, password, email, f, l) {
   const db = getDatabase(app);
 
   return new Promise ((resolve, reject) => {
-        set(ref(db, 'users/' + userId), {email: email, password: password, firstName: f, lastName: l, uid: userId })
+        set(ref(db, 'users/' + userId), {email: email, password: password, firstName: f, lastName: l, uid: userId, scoreCard: 'scoreCards'})
             .then(() => resolve(true))
             .catch(() => resolve(false));
   })
