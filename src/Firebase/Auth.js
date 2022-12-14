@@ -10,6 +10,6 @@ export function authUser(email, password) {
         // @ts-ignore
         createUserWithEmailAndPassword(auth, email, password)
             .then((data) => resolve(data.user.uid))
-            .catch(() => resolve(false));
+            .catch((error) => resolve(error));
     });                                 
 }

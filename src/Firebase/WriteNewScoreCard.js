@@ -20,8 +20,11 @@ import { getDatabase, ref, child, push, update } from "firebase/database";
 //}
 
 export const WriteNewScoreCard = async (scoreCard, userId) => {
+  const userUID = localStorage.getItem('userUID')
   const db = getDatabase(app);
   console.log("SCORECARD ", scoreCard)
+  console.log("USERUID  ", userId)
+
   // Get a key for a new Post.
 
   return new Promise((resolve, reject) => {
@@ -29,7 +32,7 @@ export const WriteNewScoreCard = async (scoreCard, userId) => {
       const newPostKey = push(child(ref(db), 'scoreCards')).key;
       // Write the new post's data simultaneously in the posts list and the user's post list.
       const updates = {};
-      updates['/users/HEOJyumInrP5loAbg2ZhnCJEuoF2/scoreCards/' + newPostKey + '/'] = { scoreCard };
+      updates['/users/'+userUID+'/scoreCards/' + newPostKey + '/'] = { scoreCard };
 
       update(ref(db), updates);
       resolve(true)
@@ -42,6 +45,7 @@ export const WriteNewScoreCard = async (scoreCard, userId) => {
 }
 
 export const editScoreCard = (scoreCard, key) => {
+  const userUID = localStorage.getItem('userUID')
   const db = getDatabase(app);
   console.log("SCORECARD ", scoreCard)
   // Get a key for a new Post.
@@ -50,7 +54,7 @@ export const editScoreCard = (scoreCard, key) => {
       const newPostKey = push(child(ref(db), 'scoreCards')).key;
       // Write the new post's data simultaneously in the posts list and the user's post list.
       const updates = {};
-      updates['/users/HEOJyumInrP5loAbg2ZhnCJEuoF2/scoreCards/' + key + '/'] = { scoreCard };
+      updates['/users/'+userUID+'/scoreCards/' + key + '/'] = { scoreCard };
 
       update(ref(db), updates);
       resolve(true)

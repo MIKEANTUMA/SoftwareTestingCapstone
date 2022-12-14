@@ -11,7 +11,7 @@ import { authUser } from "../Firebase/Auth";
 import { Button, TextField, Grid } from "@mui/material";
 import UserVaildation from "../UserValidation.js";
 import CreateUserShowcase from '../Componets/CreateUserShowcase'
-
+import { useNavigate } from "react-router-dom";
 
 
 const CreateUserForm = () => {
@@ -25,6 +25,7 @@ const CreateUserForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [PASS, setPass] = useState(false);
+  let navigate = useNavigate(); 
 
   const handleSubmit = () => {
     let userData = {
@@ -41,7 +42,7 @@ const CreateUserForm = () => {
       console.log("in handle submit");
       return authUser(email, password).then(data => {
         console.log('data ',data)
-        if (data === false) console.log("auth did not work");
+       
         //setUid(data.user.uid);
         writeNewUser(
           data,
@@ -50,7 +51,7 @@ const CreateUserForm = () => {
           email,
           firstName,
           lastName,
-        ).then(data => console.log("hopfully this works: ", data));
+        ).then(data => navigate("/"));
       });
     } else {
       console.log("error in information entered");

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,6 +8,9 @@ import Row from 'react-bootstrap/Row';
 import "../App.css";
 import { WriteNewScoreCard } from '../Firebase/WriteNewScoreCard.js'
 import ReadRecords from '../Firebase/ReadRecords';
+
+import { useSelector, useDispatch } from 'react-redux'
+import { setUserUID } from '../store/userSlice'
 /*
 {
     "courseName": "merrick",
@@ -46,6 +50,9 @@ function NewRecordForm() {
   const [stroke, setStroke] = useState([])
   const [yard, setYard] = useState([])
 
+
+  const userUID= useSelector((state) => state.user.value)
+  console.log('wow this was much easier ', userUID)
   const handleParChange = useCallback((event) =>{
     const index = parseInt(event.target.dataset.index, 10);
     setPar((p)=>{
@@ -107,15 +114,28 @@ function NewRecordForm() {
       holes: numOfHoles,
       par: par,
       holeNumber: num,
-      holeYardage: yard
+      holeYardage: yard,
+      stroke: stroke,
     }
     console.log('NEWSCORECARD: ', newScoreCard)
 
-   console.log('heyyyyyyy!!!!!!!@@@@@@@ ', await WriteNewScoreCard(newScoreCard))
+   console.log('heyyyyyyy!!!!!!!@@@@@@@ ', await WriteNewScoreCard(newScoreCard, userUID))
   }
 
   return (
+    <>
 
+    <style type='text/css'>
+      {`
+      .btn-primary{
+        color:white;
+        margin:10px;
+        align-items: center;
+        justify-content: centers;
+        
+      }
+    `}
+    </style>
     <Form >
       <div className='newRecordForm'>
       <Form.Group className="mb-3" controlId="formBasicText">
@@ -162,17 +182,17 @@ function NewRecordForm() {
         </div>
         <h1>{numOfHoles}</h1>
 
+      <div className='buttonNew'>
+        <Button variant="primary"  onClick={()=> handleSubmit()}>
+          Submit
+        </Button>
 
-      <Button variant="primary" onClick={()=> handleSubmit()}>
-        Submit
-      </Button>
-
-      <Button variant="primary" onClick={()=> handleTest()}>
-        test read records
-      </Button>
-       
+        <Button variant="primary"  onClick={()=> handleTest()}>
+          test read records
+        </Button>
+      </div>
     </Form>
-    
+    </>
   );
 }
 

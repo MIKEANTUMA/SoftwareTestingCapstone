@@ -18,19 +18,20 @@ import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useSelector, useDispatch } from 'react-redux'
+import { setUserUID } from '../store/userSlice'
 
 
 const LoginForm = () => {
-  const [uid, setUid] = useState("");
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logIn, setLogIn] = useState(false);
   let navigate = useNavigate(); 
-
+  const dispatch = useDispatch()
+  const [uid, setUid] = useState('')
 
   const handleSubmit = () => {
-
- 
 
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
@@ -38,24 +39,34 @@ const LoginForm = () => {
         // Signed in 
         const user = userCredential.user;
         console.log('log in worked: ', user)
+        console.log('lets see here ', user.uid)
+        dispatch(setUserUID(user.uid))
+        localStorage.setItem('userUID', user.uid)
+        setUid(user.uid)
         setLogIn(true)
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
     //setLogIn(true)
+    
   };
-
+  
 
   useEffect(() => {
+
     if(logIn === true){
         const path = "/pages/HomeScreen"
+
         navigate(path);
     }
   },[logIn])
 
   return (
+    
+
     <div className="inputCon">
       <h1>Puttle Login</h1>
       <Grid container spacing={2} columns={1}>
@@ -89,6 +100,8 @@ const LoginForm = () => {
         </Grid>
       </Grid>
     </div>
+ 
+
   );
 };
 
